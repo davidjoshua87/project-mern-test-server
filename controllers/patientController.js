@@ -59,10 +59,9 @@ const patient_details = async (req, res) => {
 // Update Patient Detail by Id
 const patient_update = (req, res) => {
 	Patient.findById(req.params.id, (err, response) => {
-		console.log(req.body.__v, response.__v);
 		if (req.body.__v === response.__v) {
-			req.body.__v += 1;
-			Patient.findByIdAndUpdate(req.params.id, req.body)
+			// req.body.__v += 1;
+			Patient.save(req.body)
 			.then((data) => {
 				res.status(200).json({
 					data: data,
