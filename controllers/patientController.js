@@ -60,7 +60,6 @@ const patient_details = async (req, res) => {
 const patient_update = (req, res) => {
 	Patient.findById(req.params.id, (err, response) => {
 		if (req.body.__v === response.__v) {
-			// req.body.__v += 1;
 			Patient.save(req.body)
 			.then((data) => {
 				res.status(200).json({
